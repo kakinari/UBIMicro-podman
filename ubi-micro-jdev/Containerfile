@@ -1,0 +1,7 @@
+FROM localhost/kakinari/ubi-micro-ja:9-java22-dev
+ENV container podman
+ENV JAVA_HOME /usr/lib/jvm/java-22-openjdk
+RUN alternatives --set java java-latest-openjdk.x86_64; \
+alternatives --set jre_openjdk java-latest-openjdk.x86_64
+CMD [ "/usr/bin/bash" ]
+WORKDIR /root

@@ -1,0 +1,38 @@
+FROM docker.io/kakinari/ubi-micro-ja:9-java22-dev AS devenv
+RUN curl -O https://downloads.apache.org/tomcat/tomcat-10/v10.1.24/bin/apache-tomcat-10.1.24.tar.gz; \
+tar xvzf apache-tomcat-10.1.24.tar.gz; \
+mv apache-tomcat-10.1.24 tomcat_home; \
+cd tomcat_home/bin; \
+tar xvzf commons-daemon-native.tar.gz; \
+cd commons-daemon-1.3.4-native-src/unix; \
+export JAVA_HOME=/usr/lib/jvm/jre-22-openjdk; \
+./configure; \
+make; \
+mv jsvc ../..; \
+cd ../..; \
+rm -rf *.bat commons-daemon-1.3.4-native-src *.gz;
+
+FROM docker.io/kakinari/ubi-micro-ja:9-jre22
+COPY --from=devenv /root/tomcat_home /opt/tomcat_home
+ENV CATALINA_HOME=/opt/tomcat_home
+ENV CATALINA_BASE=/opt/tomcat
+COPY startup.sh /opt/
+RUN echo "apache:x:8000:" >> /etc/group; \
+echo "tomcat:x:8000:8000::/opt/tomcat:/sbin/nologin" >> /etc/passwd; \
+mkdir $CATALINA_BASE;\
+(cd $CATALINA_BASE; mkdir bin conf logs webapps lib work temp;\
+(cd bin;\
+cp $CATALINA_HOME/bin/tomcat-juli.jar .;\
+touch setenv.sh;\
+mv /opt/startup.sh .; \
+chmod 750 *.sh;\
+ln -s startup.sh shutdown.sh;\
+ln -s startup.sh daemon.sh); \
+cp -r $CATALINA_HOME/webapps/* webapps;\
+cp -r $CATALINA_HOME/conf/* conf;\
+cp -r $CATALINA_HOME/lib/* lib);\
+chown -R tomcat:apache $CATALINA_HOME;\
+chown -R tomcat:apache $CATALINA_BASE;\
+rm -rf $CATALINA_HOME/webapps/*;
+EXPOSE 8080
+CMD [ "/bin/sh", "-c", "/opt/tomcat/bin/daemon.sh run" ]

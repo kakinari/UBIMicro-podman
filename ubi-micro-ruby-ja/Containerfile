@@ -1,0 +1,4 @@
+FROM localhost/kakinari/ubi-micro-ja:9-ruby3
+ENV container podman
+CMD [ "/usr/bin/bash" ]
+WORKDIR /root
