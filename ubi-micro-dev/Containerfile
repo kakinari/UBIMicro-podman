@@ -1,4 +1,0 @@
-FROM localhost/kakinari/ubi-micro-ja:9-dev
-ENV container podman
-CMD [ "/usr/bin/bash" ]
-WORKDIR /root

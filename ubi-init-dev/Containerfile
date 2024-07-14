@@ -1,0 +1,14 @@
+FROM registry.access.redhat.com/ubi9/ubi-init
+ENV conteiner podman
+RUN dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm -y; \
+dnf update; \
+dnf install glibc-langpack-ja -y; \
+dnf groupinstall "Development Tools" -y; \
+dnf install openssh-clients libyaml java-latest-openjdk-devel java-latest-openjdk-jmods -y; \
+dnf remove java-1.8.0-openjdk-headless -y; \
+dnf clean all; \
+rm -rf /root/*
+ENV LANG ja_JP.UTF-8
+ENV TZ JST-9
+ENV JAVA_HOME /usr/lib/jvm/java-22-openjdk
+WORKDIR "/root"

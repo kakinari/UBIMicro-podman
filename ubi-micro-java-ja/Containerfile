@@ -1,5 +1,0 @@
-FROM localhost/kakinari/ubi-micro-ja:9-java22
-ENV container podman
-ENV JAVA_HOME /usr/lib/jvm/java-22-openjdk
-CMD [ "/usr/bin/bash" ]
-WORKDIR /root

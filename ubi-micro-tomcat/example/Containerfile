@@ -1,3 +1,0 @@
-FROM docker.io/kakinari/ubi-micro-ja:9-22-tomcat10
-COPY tomcat-users.xml /opt/tomcat_home/conf/tomcat-users.xml
-COPY tomcat-users.xml /opt/tomcat/conf/tomcat-users.xml

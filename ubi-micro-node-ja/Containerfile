@@ -1,8 +1,0 @@
-FROM localhost/kakinari/ubi-micro-ja:9-node22
-ENV container podman
-COPY install.sh /root/install.sh
-RUN touch .bashrc;sh ./install.sh; . ~/.bashrc; nvm install 22
-EXPOSE 3000
-CMD [ "/usr/bin/bash" ]
-WORKDIR /root
-

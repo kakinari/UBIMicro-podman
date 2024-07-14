@@ -1,5 +1,3 @@
-FROM localhost/kakinari/ubi-micro-ja:9-22-jbase
-ENV container podman
-ENV JAVA_HOME /usr/lib/jvm/jre-22-openjdk
-CMD [ "/usr/bin/bash" ]
-WORKDIR /root
+ARG  VERSION 22
+FROM localhost/kakinari/ubi-micro-ja:9-jbase
+ENV JAVA_HOME /usr/lib/jvm/jre-${VERSION}-openjdk

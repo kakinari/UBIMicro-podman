@@ -1,6 +1,0 @@
-FROM localhost/kakinari/ubi-micro-ja:9-jekyll
-ENV container podman
-RUN gem install jekyll
-CMD [ "/usr/bin/bash" ]
-EXPOSE 4000
-WORKDIR /root

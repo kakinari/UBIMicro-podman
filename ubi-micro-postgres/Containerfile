@@ -1,0 +1,18 @@
+FROM localhost/kakinari/ubi-micro-ja:9-dev AS devenv
+RUN curl -O https://ftp.postgresql.org/pub/source/v16.3/postgresql-16.3.tar.gz; \
+tar xvzf postgresql-16.3.tar.gz; \
+cd postgresql-16.3; \
+./configure  --with-perl --with-python --with-tcl --with-lz4 --enable-nls="ja" \
+ --with-zstd --with-openssl --with-systemd --with-libxml --with-libraries='/usr/lib64'; \
+make world; \
+make check; \
+make install-world;
+
+FROM localhost/kakinari/ubi-micro-ja:9-postgres
+COPY --from=devenv /usr/local /usr/local
+ENV LD_LIBRARY_PATH /usr/local/pgsql/lib
+ENV PATH /usr/local/pgsql/bin:$HOME/.local/bin:$HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+USER postgres:postgres
+RUN adduser postgres; \
+    mkdir -p /usr/local/pgsql/data; \
+    chown postgres:postgres /usr/local/pgsql/data;
