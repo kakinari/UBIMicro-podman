@@ -3,8 +3,10 @@ ARG VERSION 5.6.3
 RUN curl -O https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-${VERSION}.tgz; \
 tar xvzf apache-jmeter-${VERSION}.tgz
 
-FROM localhost/kakinari/ubi-micro-ja:9-jbase
+FROM docker.io/kakinari/ubi-micro-ja:9-jbase
 ARG VERSION 5.6.3
 COPY --from=devenv /root/apache-jmeter-${VERSION} /opt/apache-jmeter-${VERSION}
-ENV JMETER_HOME /opt/apache-jmeter-${VERSION}
-CMD [ "/opt/apache-jmeter-${VERSION}/bin/jmeter" ]
+COPY jmeter-ja /opt/apache-jmeter-${VERSION}/bin
+ENV VERSION ${VERSION}
+ENV JMETER_HOME /opt/apache-jmeter-$VERSION
+CMD [ "/usr/bin/bash", "-c", "/opt/apache-jmeter-$VERSION/bin/jmeter-ja" ]

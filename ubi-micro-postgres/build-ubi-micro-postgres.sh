@@ -28,7 +28,7 @@ buildah umount $microcontainer
 buildah commit $microcontainer localhost/kakinari/ubi-micro-ja:9-postgres
 podman build --build-arg VERSION=${VERSION} -t docker.io/kakinari/ubi-micro-ja:9-postgres-latest .
 podman tag  docker.io/kakinari/ubi-micro-ja:9-postgres-latest docker.io/kakinari/ubi-micro-ja:9-postgres-${VERSION}
-podman push docker.io/kakinari/ubi-micro-ja:9-postgres-1${VERSION}
+podman push docker.io/kakinari/ubi-micro-ja:9-postgres-${VERSION}
 podman push docker.io/kakinari/ubi-micro-ja:9-postgres-latest
 podman image rm localhost/kakinari/ubi-micro-ja:9-postgres -f
 podman image rm docker.io/kakinari/ubi-micro-ja:9-postgres-latest -f

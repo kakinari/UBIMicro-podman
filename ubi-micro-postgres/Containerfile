@@ -11,8 +11,12 @@ make install-world;
 FROM localhost/kakinari/ubi-micro-ja:9-postgres
 COPY --from=devenv /usr/local /usr/local
 ENV LD_LIBRARY_PATH /usr/local/pgsql/lib
+ENV PGDATA /usr/local/pgsql/data
+ENV PGLOGDIR /usr/local/pgsql/log
 ENV PATH /usr/local/pgsql/bin:$HOME/.local/bin:$HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-USER postgres:postgres
 RUN adduser postgres; \
-    mkdir -p /usr/local/pgsql/data; \
-    chown postgres:postgres /usr/local/pgsql/data;
+mkdir -p /usr/local/pgsql/data; \
+mkdir -p /usr/local/pgsql/logs; \
+chown -R postgres:postgres /usr/local/pgsql;
+USER postgres:postgres
+WORKDIR /home/postgres
