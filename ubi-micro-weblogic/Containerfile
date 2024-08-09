@@ -1,5 +1,5 @@
-ARG VERSION 22
 FROM localhost/kakinari/ubi-micro-ja:9-weblogic
+ARG VERSION=11
 RUN groupadd -g 7000 oracle; \
 useradd -g oracle -u 7000 oracle; \
 mkdir /opt/oraInventory; \

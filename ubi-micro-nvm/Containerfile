@@ -1,5 +1,5 @@
 FROM localhost/kakinari/ubi-micro-ja:9-nvm
-ARG VERSION v0.39.7
+ARG VERSION=v0.39.7
 RUN mkdir /root/work; touch /root/.bashrc; \
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/${VERSION}/install.sh | bash
 WORKDIR /usr/work

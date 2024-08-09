@@ -1,4 +1,6 @@
 FROM docker.io/kakinari/ubi-micro-ja:9-ruby-latest
-RUN gem install jekyll bundler; \
-gem update --system 3.5.15
+RUN gem update --system 3.5.15; \
+gem install jekyll webrick; \
+bundle init;\
+bundle add github-pages csv webrick;
 EXPOSE 4000

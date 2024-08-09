@@ -1,6 +1,6 @@
 FROM docker.io/kakinari/ubi-micro-ja:9-jdev AS devenv
-ARG VERSION 10.1.26
-ARG COMMON 1.4.0
+ARG VERSION=10.1.26
+ARG COMMON=1.4.0
 COPY container-tomcat.service /root/container-tomcat.service
 RUN curl -O https://dlcdn.apache.org/tomcat/tomcat-10/v${VERSION}/bin/apache-tomcat-${VERSION}.tar.gz; \
 tar xvzf apache-tomcat-${VERSION}.tar.gz; \

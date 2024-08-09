@@ -1,3 +1,3 @@
-ARG VERSION 22
 FROM localhost/kakinari/ubi-micro-ja:9-jdev
-ENV JAVA_HOME /usr/lib/jvm/java-${VERSION}-openjdk
+ARG TARGET=22
+ENV JAVA_HOME /usr/lib/jvm/java-$TARGET-openjdk

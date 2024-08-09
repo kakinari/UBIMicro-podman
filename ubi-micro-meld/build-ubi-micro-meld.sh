@@ -16,7 +16,7 @@ dnf clean all \
 
 buildah umount $microcontainer
 buildah commit $microcontainer localhost/kakinari/ubi-micro-ja:9-meld
-buildah build --build-arg VERSION=${VERSION} -t docker.io/kakinari/ubi-micro-ja:9-meld-latest .
+buildah build --build-arg=VERSION=${VERSION} -t docker.io/kakinari/ubi-micro-ja:9-meld-latest .
 podman tag  docker.io/kakinari/ubi-micro-ja:9-meld-latest docker.io/kakinari/ubi-micro-ja:9-meld-${VERSION}
 podman push docker.io/kakinari/ubi-micro-ja:9-meld-${VERSION}
 podman push docker.io/kakinari/ubi-micro-ja:9-meld-latest

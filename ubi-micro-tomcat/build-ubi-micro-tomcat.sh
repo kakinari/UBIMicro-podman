@@ -1,8 +1,8 @@
 #/usr!/bin/bash
-VERSION=10.1.26
+VERSION=10.1.28
 COMMON=1.4.0
 
-podman build --build-arg VERSION=${VERSION} --build-arg COMMON=${COMMON} -t docker.io/kakinari/ubi-micro-ja:9-tomcat-latest .
+podman build --build-arg=VERSION=${VERSION} --build-arg COMMON=${COMMON} -t docker.io/kakinari/ubi-micro-ja:9-tomcat-latest .
 podman tag  docker.io/kakinari/ubi-micro-ja:9-tomcat-latest docker.io/kakinari/ubi-micro-ja:9-tomcat-${VERSION}
 podman push docker.io/kakinari/ubi-micro-ja:9-tomcat-${VERSION}
 podman push docker.io/kakinari/ubi-micro-ja:9-tomcat-latest

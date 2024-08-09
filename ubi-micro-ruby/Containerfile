@@ -1,5 +1,5 @@
 FROM docker.io/kakinari/ubi-micro-ja:9-dev AS devenv
-ARG VERSION 3.3.3
+ARG VERSION=3.3.3
 RUN curl -O https://cache.ruby-lang.org/pub/ruby/3.3/ruby-${VERSION}.tar.gz; \
 tar xvzf ruby-${VERSION}.tar.gz; \
 cd ruby-${VERSION}; \

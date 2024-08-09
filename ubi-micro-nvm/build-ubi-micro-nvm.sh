@@ -15,6 +15,6 @@ dnf clean all \
 
 buildah umount $microcontainer
 buildah commit $microcontainer localhost/kakinari/ubi-micro-ja:9-nvm
-podman build --build-arg VERSION=${VERSION}  -t docker.io/kakinari/ubi-micro-ja:9-nvm .
+podman build --build-arg=VERSION=${VERSION}  -t docker.io/kakinari/ubi-micro-ja:9-nvm .
 podman push docker.io/kakinari/ubi-micro-ja:9-nvm
 podman image rm localhost/kakinari/ubi-micro-ja:9-nvm

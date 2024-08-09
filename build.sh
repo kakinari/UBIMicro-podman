@@ -15,6 +15,7 @@ podman login docker.io
 (cd ubi-micro-ant; ./build-ubi-micro-ant.sh)
 (cd ubi-micro-gradle; ./build-ubi-micro-gradle.sh)
 (cd ubi-micro-maven; ./build-ubi-micro-maven.sh)
+(cd ubi-micro-graal; ./build-ubi-micro-graal.sh)
 
 (cd ubi-micro-ruby; ./build-ubi-micro-ruby.sh)
 (cd ubi-micro-jekyll; ./build-ubi-micro-jekyll.sh)
@@ -26,4 +27,5 @@ podman login docker.io
 
 (cd ubi-micro-postgres; ./build-ubi-micro-postgres.sh)
 (cd ubi-micro-weblogic; ./build-ubi-micro-weblogic.sh)
+(cd ubi-micro-mysql; .//build-ubi-micro-mysql-server.sh)
 ./cleanup.sh
