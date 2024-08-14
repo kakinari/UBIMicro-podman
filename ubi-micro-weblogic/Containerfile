@@ -1,0 +1,16 @@
+FROM localhost/kakinari/ubi-micro-ja:9-weblogic
+ARG VERSION=11
+RUN groupadd -g 7000 oracle; \
+useradd -g oracle -u 7000 oracle; \
+mkdir /opt/oraInventory; \
+chown -R oracle:oracle /opt
+COPY  oraInst.loc /etc/oraInst.loc
+USER oracle:oracle
+ENV JAVA_HOME /usr/lib/jvm/jdk-11-oracle-x64
+ENV ORACLE_HOME /opt/oracle
+WORKDIR /home/oracle
+COPY responseFile fmw_14.1.1.0.0_wls_lite_generic.jar /home/oracle
+RUN java -jar fmw_14.1.1.0.0_wls_lite_generic.jar \
+-responseFile /home/oracle/responseFile -silent; \
+rm -f fmw_14.1.1.0.0_wls_lite_generic.jar
+EXPOSE 7000-9999

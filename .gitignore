@@ -1,6 +1,8 @@
-_site
-Gemfile.lock
-.sass-cache
-.jekyll-cache
-.jekyll-metadata
-vendor
+
+ubi-micro-weblogic/fmw_14.1.1.0.0_wls_lite_generic.jar
+ubi-micro-weblogic/jdk-11.0.22_linux-x64_bin.rpm
+ubi-micro-tomcat/commands/container-tomcat.service
+ubi-micro-tomcat/commands/container-tomcat.service
+ubi-micro-tomcat/commands/exec_bash.sh
+ubi-micro-tomcat/commands/run_tomcat.sh
+/ubi-micro-tomcat/commands
