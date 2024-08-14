@@ -1,0 +1,8 @@
+_site
+Gemfile.lock
+.sass-cache
+.jekyll-cache
+.jekyll-metadata
+vendor
+run.sh
+theme_readme.markdown
