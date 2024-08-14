@@ -1,4 +1,0 @@
-FROM docker.io/kakinari/ubi-micro-ja:9-nvm
-ARG VERSION=22
-RUN . /root/.nvm/nvm.sh; nvm install ${VERSION}
-EXPOSE 3000
