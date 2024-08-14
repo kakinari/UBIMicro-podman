@@ -1,3 +1,0 @@
-FROM localhost/kakinari/ubi-micro-ja:9-jdev
-ARG TARGET=22
-ENV JAVA_HOME /usr/lib/jvm/java-$TARGET-openjdk

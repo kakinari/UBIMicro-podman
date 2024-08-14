@@ -1,4 +1,0 @@
-FROM localhost/kakinari/ubi-micro-ja:9-mysql
-ARG VERSION=8.4
-RUN mv /etc/systemd/system/multi-user.target.wants/mysqld.service /etc/systemd/system/;
-CMD [ "/sbin/init" ]

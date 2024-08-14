@@ -1,2 +1,0 @@
-FROM localhost/kakinari/ubi-micro-ja:9-meld
-CMD [ "/usr/bin/meld" ]
