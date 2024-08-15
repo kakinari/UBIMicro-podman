@@ -1,7 +1,10 @@
 ---
 layout: home
-title: こんにちは
-description: Redhat Enterprise Linux の 遊び方
+title: Podman UBI Micro images
+description: Enjoy Redhat Enterprise Linux
+lang: en
+subtitle: Latest information
 ---
-## これはなんだろ
-## 魑魅魍魎
+## What is this site
+
+## UBI-Micro Image
