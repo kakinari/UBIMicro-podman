@@ -1,7 +1,7 @@
 #!/usr/bin/bash
-VERSION=22.6.0
+VERSION=23.5.0
 
-podman build --build-arg=VERSION=22 -t docker.io/kakinari/ubi-micro-ja:9-node-latest .
+podman build --build-arg VERSION=23 -t docker.io/kakinari/ubi-micro-ja:9-node-latest .
 podman tag  docker.io/kakinari/ubi-micro-ja:9-node-latest docker.io/kakinari/ubi-micro-ja:9-node-${VERSION}
 podman push docker.io/kakinari/ubi-micro-ja:9-node-${VERSION}
 podman push docker.io/kakinari/ubi-micro-ja:9-node-latest

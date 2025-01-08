@@ -5,9 +5,12 @@ podman login docker.io
 (cd ubi-micro-9; ./build-ubi-micro-ja.sh)
 (cd ubi-micro-base; ./build-ubi-micro-base.sh)
 (cd ubi-micro-jbase; ./build-ubi-micro-jbase.sh)
+(cd ubi-micro-jbase-17; ./build-ubi-micro-jbase.sh)
 (cd ubi-micro-jbase-nx; ./build-ubi-micro-jbase-nx.sh)
+(cd ubi-micro-jbase-nx-17; ./build-ubi-micro-jbase-nx.sh)
 (cd ubi-micro-dev; ./build-ubi-micro-dev.sh)
 (cd ubi-micro-jdev; ./build-ubi-micro-jdev.sh)
+(cd ubi-micro-jdev-17; ./build-ubi-micro-jdev.sh)
 
 (cd ubi-micro-sdkman; ./build-ubi-micro-sdkman.sh)
 (cd ubi-micro-nvm; ./build-ubi-micro-nvm.sh)
@@ -24,8 +27,16 @@ podman login docker.io
 (cd ubi-micro-meld; ./build-ubi-micro-meld.sh)
 (cd ubi-micro-jmmeter; ./build-ubi-micro-jmeter.sh)
 (cd ubi-micro-tomcat; ./build-ubi-micro-tomcat.sh)
+(cd ubi-micro-tomcat9; ./build-ubi-micro-tomcat.sh)
 
+(cd ubi-micro-postgres16; ./build-ubi-micro-postgres.sh)
 (cd ubi-micro-postgres; ./build-ubi-micro-postgres.sh)
 (cd ubi-micro-weblogic; ./build-ubi-micro-weblogic.sh)
 (cd ubi-micro-mysql; .//build-ubi-micro-mysql-server.sh)
+(cd ubi-micro-oracle-free; ./build-ubi-micro-joracle-free.sh)
+(cd ubi-micro-mysqlworkbench; ./build-ubi-micro-mysqlwb.sh)
+
+(cd ubi-micro-eclipse; ./build-ubi-micro-eclipse.sh)
+(cd ubi-micro-wagby; ./build-ubi-micro-wagby.sh)
+
 ./cleanup.sh

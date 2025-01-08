@@ -1,0 +1,7 @@
+FROM localhost/kakinari/ubi-micro-ja:9-eclipse
+ADD eclipse-jee-2024-12-R-linux-gtk-x86_64.tar.gz /opt
+ADD pleiades.tar.gz /opt/eclipse
+RUN chown -R 0:0 /opt/eclipse; \
+echo '-Xverify:none' >> /opt/eclipse/eclipse.ini; \
+echo '-javaagent:/opt/eclipse/plugins/jp.sourceforge.mergedoc.pleiades/pleiades.jar' >> /opt/eclipse/eclipse.ini
+CMD [ "/opt/eclipse/eclipse" ]

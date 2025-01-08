@@ -8,7 +8,7 @@ dnf install \
 --setopt install_weak_deps=false \
 --setopt=reposdir=/etc/yum.repos.d/ \
 --nodocs -y \
-jdk-11.0.22_linux-x64_bin.rpm \
+jdk-11.0.23_linux-x64_bin.rpm \
 google-noto-cjk-fonts-common \
 google-noto-sans-cjk-ttc-fonts \
 google-noto-serif-cjk-ttc-fonts \
@@ -19,7 +19,7 @@ dnf clean all \
 
 buildah umount $microcontainer
 buildah commit $microcontainer localhost/kakinari/ubi-micro-ja:9-weblogic
-podman build --build-arg=VERSION=${VERSION} -t docker.io/kakinari/ubi-micro-ja:9-weblogic-latest .
+podman build --build-arg VERSION=${VERSION} -t docker.io/kakinari/ubi-micro-ja:9-weblogic-latest .
 podman tag  docker.io/kakinari/ubi-micro-ja:9-weblogic-latest  docker.io/kakinari/ubi-micro-ja:9-weblogic-${VERSION}
 podman push docker.io/kakinari/ubi-micro-ja:9-weblogic-${VERSION}
 podman push docker.io/kakinari/ubi-micro-ja:9-weblogic-latest

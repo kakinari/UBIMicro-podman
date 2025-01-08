@@ -1,0 +1,3 @@
+FROM localhost/kakinari/ubi-micro-ja:9-jbase
+ARG TARGET=17
+ENV JAVA_HOME /usr/lib/jvm/jre-$TARGET-openjdk

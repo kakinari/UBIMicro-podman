@@ -1,0 +1,9 @@
+FROM localhost/kakinari/ubi-micro-ja:9-jdev
+ARG TARGET=17
+ENV JAVA_HOME /usr/lib/jvm/java-$TARGET-openjdk
+EXPOSE 8920
+RUN --mount=type=bind,source=.,target=/root \
+unzip Wagby-9.2.6.zip -d /opt
+WORKDIR /opt/Wagby-9.2.6/wagbydesigner/bin
+RUN sed -e "s/ start / run /" startup.sh > runonterm.sh; chmod +x *.sh ../../misc/*.sh
+CMD [ "/usr/bin/bash", "./runonterm.sh" ]

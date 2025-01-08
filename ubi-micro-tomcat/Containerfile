@@ -1,5 +1,5 @@
 FROM docker.io/kakinari/ubi-micro-ja:9-jdev AS devenv
-ARG VERSION=10.1.26
+ARG VERSION=10.1.34
 ARG COMMON=1.4.0
 COPY container-tomcat.service /root/container-tomcat.service
 RUN curl -O https://dlcdn.apache.org/tomcat/tomcat-10/v${VERSION}/bin/apache-tomcat-${VERSION}.tar.gz; \
@@ -8,7 +8,7 @@ mv apache-tomcat-${VERSION} tomcat_home; \
 cd tomcat_home/bin; \
 tar xvzf commons-daemon-native.tar.gz; \
 cd commons-daemon-${COMMON}-native-src/unix; \
-JAVA_HOME=/usr/lib/jvm/jre-22-openjdk ./configure; \
+JAVA_HOME=/usr/lib/jvm/jre-23-openjdk ./configure; \
 make; \
 mv jsvc ../..; \
 cd ../..; \

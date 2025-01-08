@@ -1,0 +1,1 @@
+podman run -d --rm --name base -e DISPLAY -p 8920:8920 -v /root/.cache/wagby/repository/trunk:/opt/Wagby-9.2.6/repository/trunk  -v /root/.cache/wagby/customize:/opt/Wagby-9.2.6/customize -v /tmp/.X11-unix:/tmp/.X11-unix docker.io/kakinari/ubi-micro-ja:9-wagby-9.2.6
