@@ -1,6 +1,6 @@
 FROM docker.io/kakinari/ubi-micro-ja:9-dev AS devenv
 ARG VERSION=3.4.1
-RUN curl -O https://cache.ruby-lang.org/pub/ruby/3.4/ruby-3.4.1.tar.gz; \
+RUN curl -O https://cache.ruby-lang.org/pub/ruby/3.4/ruby-${VERSION}.tar.gz; \
 tar xvzf ruby-${VERSION}.tar.gz; \
 cd ruby-${VERSION}; \
 ./configure; \

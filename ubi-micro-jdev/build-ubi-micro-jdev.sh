@@ -1,5 +1,5 @@
 #!/usr/bin/bash
-VERSION=22
+VERSION=24
 microcontainer=$(buildah from docker.io/kakinari/ubi-micro-ja:9-dev)
 micromount=$(buildah mount $microcontainer)
 dnf install \
@@ -14,7 +14,7 @@ dnf clean all \
 
 buildah umount $microcontainer
 buildah commit $microcontainer localhost/kakinari/ubi-micro-ja:9-jdev
-podman build --build-arg TARGET=22 -t docker.io/kakinari/ubi-micro-ja:9-jdev .
+podman build --build-arg TARGET=${VERSION} -t docker.io/kakinari/ubi-micro-ja:9-jdev .
 podman tag  docker.io/kakinari/ubi-micro-ja:9-jdev docker.io/kakinari/ubi-micro-ja:9-jdev-${VERSION}
 podman push docker.io/kakinari/ubi-micro-ja:9-jdev-${VERSION}
 podman push docker.io/kakinari/ubi-micro-ja:9-jdev

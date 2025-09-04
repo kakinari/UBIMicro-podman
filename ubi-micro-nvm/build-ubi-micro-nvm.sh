@@ -1,5 +1,5 @@
 #!/bin/bash
-VERSION=v0.40.0
+VERSION=v0.40.3
 microcontainer=$(buildah from docker.io/kakinari/ubi-micro-ja:9-base)
 micromount=$(buildah mount $microcontainer)
 dnf install \
@@ -7,8 +7,8 @@ dnf install \
 --releasever=/ \
 --setopt install_weak_deps=false \
 --setopt=reposdir=/etc/yum.repos.d/ \
---nodocs -y \
-libstdc++ curl findutils less tar unzip gzip vim-minimal python3 python3-pip
+--nodocs -y --allowerasing \
+libstdc++ curl findutils less tar unzip gzip vim-minimal python3 python3-pip wget
 
 dnf clean all \
 --installroot $micromount

@@ -15,6 +15,6 @@ dnf clean all \
 buildah umount $microcontainer
 buildah commit $microcontainer localhost/kakinari/ubi-micro-ja:9-jdev
 podman build  --build-arg TARGET=17 -t docker.io/kakinari/ubi-micro-ja:9-wagby-9.2.6 .
-podman push docker.io/kakinari/ubi-micro-ja:9-wagby-9.2.6 .
+podman push docker.io/kakinari/ubi-micro-ja:9-wagby-9.2.6 
 podman image rm -f localhost/kakinari/ubi-micro-ja:9-jdev
-podman image rm -f docker.io/kakinari/ubi-micro-ja:9-wagby-9.2.6 .
+podman image rm -f docker.io/kakinari/ubi-micro-ja:9-wagby-9.2.6 
