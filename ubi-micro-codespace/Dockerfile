@@ -1,5 +1,5 @@
-FROM redhat/ubi9-init:latest
-RUN dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm -y; \
+FROM registry.redhat.io/ubi10-init:latest
+RUN dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-10.noarch.rpm -y; \
 dnf install glibc-langpack-jai less curl container-tools podman-docker xauth openssl openssh ; \
 LANG=C dnf groupinstall "Development Tools" -y; \
 dnf remove java-1.8.0-openjdk-headless -y; \

@@ -1,4 +1,4 @@
-FROM localhost/kakinari/ubi-micro-ja:9
+FROM localhost/kakinari/ubi-micro-ja:10
 ENV container podman
 ENV LANG ja_JP.UTF-8
 ENV LANGUAGE ja_JP:ja

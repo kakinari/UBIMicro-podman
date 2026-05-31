@@ -1,6 +1,6 @@
-FROM registry.access.redhat.com/ubi9/ubi-init
+FROM registry.redhat.io/ubi10-init:latest
 ENV conteiner podman
-RUN dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm -y; \
+RUN dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-10.noarch.rpm -y; \
 dnf update; \
 dnf install glibc-langpack-ja -y; \
 dnf groupinstall "Development Tools" -y; \
