@@ -1,0 +1,5 @@
+FROM localhost/kakinari/ubi-micro-ja:10-cs-nodejs
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
+RUN . "$HOME/.nvm/nvm.sh" && nvm install 26
+RUN curl -fsSL https://get.pnpm.io/install.sh | ENV="$HOME/.bashrc" SHELL="$(which bash)" bash -
+RUN . ~/.bashrc && pnpm install --global corepack@latest && corepack enable

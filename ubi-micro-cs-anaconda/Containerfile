@@ -1,0 +1,13 @@
+FROM localhost/kakinari/ubi-micro-ja:10-cs-anaconda
+RUN curl -O https://repo.anaconda.com/archive/Anaconda3-2025.12-2-Linux-x86_64.sh && \
+    bash Anaconda3-2025.12-2-Linux-x86_64.sh -b -p /opt/anaconda && \
+    rm -rf Anaconda3-2025.12-2-Linux-x86_64.sh && \
+    /opt/anaconda/bin/conda clean -afy && \
+    find /opt/anaconda -type f -name '*.a' -delete && \
+    find /opt/anaconda -type f -name '*.js.map' -delete && \
+    find /opt/anaconda -type f -name '*.pyc' -delete && \
+    find /opt/anaconda -type f -name '*.pyo' -delete && \
+    find /opt/anaconda -type f -name '__pycache__' -delete && \
+    /opt/anaconda/bin/conda init --all && \
+    /opt/anaconda/bin/pip install torch torchvision --index-url https://download.pytorch.org/whl/cu132 && \
+    echo 'export PATH="/opt/anaconda/bin:${PATH}"' >> ~/.bashrc
