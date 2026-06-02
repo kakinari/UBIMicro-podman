@@ -18,5 +18,5 @@ buildah rm $microcontainer
 podman build --build-arg VERSION=${VERSION}  -t docker.io/kakinari/ubi-micro-ja:10-cs-java-${VERSION} .
 podman push docker.io/kakinari/ubi-micro-ja:10-cs-java-${VERSION}
 podman rmi -f localhost/kakinari/ubi-micro-ja:10-cs-java
-podman rmi -f docker.io/kakinari/ubi-micro-ja:10-cs-java-${VERSION}
-podman rmi -f docker.io/kakinari/ubi-micro-ja:10-csbase
+# podman rmi -f docker.io/kakinari/ubi-micro-ja:10-cs-java-${VERSION}
+# podman rmi -f docker.io/kakinari/ubi-micro-ja:10-csbase

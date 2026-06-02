@@ -26,5 +26,5 @@ buildah commit $microcontainer localhost/kakinari/ubi-micro-ja:10-csbase
 podman build -t docker.io/kakinari/ubi-micro-ja:10-csbase .
 podman push docker.io/kakinari/ubi-micro-ja:10-csbase
 podman image rm localhost/kakinari/ubi-micro-ja:10-csbase
-podman image rm docker.io/kakinari/ubi-micro-ja:10-csbase
+# podman image rm docker.io/kakinari/ubi-micro-ja:10-csbase
 podman image rm registry.redhat.io/ubi10-init:latest -f
