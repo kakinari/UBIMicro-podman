@@ -9,8 +9,7 @@ RUN curl -O https://repo.anaconda.com/archive/Anaconda3-2025.12-2-Linux-x86_64.s
     find /opt/anaconda -type f -name '*.pyo' -delete && \
     find /opt/anaconda -type f -name '__pycache__' -delete && \
     /opt/anaconda/bin/conda init --all && \
-    /opt/anaconda/bin/pip install torch torchvision --index-url https://download.pytorch.org/whl/cu132 && \
-    /opt/anaconda/bin/pip install opencv-python && \
-    echo 'export PATH="/opt/anaconda/bin:${PATH}"' >> ~/.bashrc
-
+    /opt/anaconda/bin/pip install torch torchvision --index-url https://download.pytorch.org/whl/cu132 --root-user-action=ignore && \
+    /opt/anaconda/bin/pip install opencv-python --root-user-action=ignore
+    
 EXPOSE 8888
