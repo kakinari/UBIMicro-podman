@@ -1,5 +1,13 @@
 FROM localhost/kakinari/ubi-micro-ja:10-cs-nodejs
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
-RUN . "$HOME/.nvm/nvm.sh" && nvm install 26
-RUN curl -fsSL https://get.pnpm.io/install.sh | ENV="$HOME/.bashrc" SHELL="$(which bash)" bash -
-RUN . ~/.bashrc && pnpm install --global corepack@latest && corepack enable
+COPY node.sh /etc/profile.d/node.sh
+WORKDIR /opt
+RUN curl -L https://nodejs.org/dist/latest/node-v26.3.0-linux-x64.tar.gz | tar xzf - && \
+    mv node-v26.3.0-linux-x64 node && \
+    chmod 777 node && \
+    mkdir -p  pnpm && \
+    chmod 777 pnpm && \
+    source /etc/profile.d/node.sh && \
+    curl -fsSL https://get.pnpm.io/install.sh | sh - && \
+    pnpm config set store-dir /opt/pnpm/store --global && \
+    pnpm config set prefix /opt/pnpm --global
+WORKDIR /root

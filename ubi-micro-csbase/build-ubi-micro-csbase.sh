@@ -3,7 +3,7 @@
 microcontainer=$(buildah from registry.redhat.io/ubi10-init:latest)
 micromount=$(buildah mount $microcontainer)
 dnf install langpacks-ja glibc-langpack-ja langpacks-fonts-ja \
-            wget container-tools podman-docker xauth openssl openssh gh \
+            bzip2 wget container-tools podman-docker xauth openssl openssh gh \
 --installroot $micromount \
 --releasever=/ \
 --setopt install_weak_deps=false \
