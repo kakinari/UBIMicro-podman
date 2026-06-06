@@ -11,3 +11,4 @@ RUN curl -L https://nodejs.org/dist/latest/node-v26.3.0-linux-x64.tar.gz | tar x
     pnpm config set store-dir /opt/pnpm/store --global && \
     pnpm config set prefix /opt/pnpm --global
 WORKDIR /root
+ENV PATH="/opt/node/bin:/opt/pnpm/bin:${PATH}"
