@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Red Hat UBI Micro ベースの各種開発・実行環境イメージをまとめた UBIMicro-podman の紹介ページ" />
+  <title>UBIMicro-podman</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <p class="eyebrow">GitHub Pages</p>
+      <h1>UBIMicro-podman</h1>
+      <p class="lead">
+        Red Hat UBI Micro をベースにした各種コンテナイメージをまとめたリポジトリです。
+        日本語環境、Java、Node.js、データベース、開発ツールなど、用途別に利用できるイメージを公開しています。
+      </p>
+      <div class="hero-actions">
+        <a class="button button-primary" href="https://github.com/kakinari/UBIMicro-podman">GitHub Repository</a>
+        <a class="button button-secondary" href="https://hub.docker.com/r/kakinari/ubi-micro-ja">Docker Hub</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <div class="section-heading">
+          <h2>このリポジトリについて</h2>
+          <p>
+            ネットワーク上の VM や WSL で使いやすい開発・実行環境を、コンテナイメージとしてすばやく利用できるようにすることを目的としています。
+            学習用途、ビルド用途、CI/CD の実行環境としても活用できます。
+          </p>
+        </div>
+        <div class="feature-grid">
+          <article class="card">
+            <h3>軽量なベース環境</h3>
+            <p>Red Hat UBI Micro ベースで、用途に応じて拡張しやすい構成です。</p>
+          </article>
+          <article class="card">
+            <h3>日本語利用を意識</h3>
+            <p>日本語環境やフォント構成を考慮したイメージを提供しています。</p>
+          </article>
+          <article class="card">
+            <h3>用途別イメージ</h3>
+            <p>Java、Node.js、DB、ビルド環境などを用途別ディレクトリで整理しています。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-heading">
+          <h2>利用方法</h2>
+          <p>Docker / Podman のどちらからでも Docker Hub 上のイメー���を取得できます。</p>
+        </div>
+        <div class="command-grid">
+          <article class="command-card">
+            <h3>Podman</h3>
+            <pre><code>podman pull docker.io/kakinari/ubi-micro-ja:tagname</code></pre>
+          </article>
+          <article class="command-card">
+            <h3>Docker</h3>
+            <pre><code>docker pull kakinari/ubi-micro-ja:tagname</code></pre>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-heading">
+          <h2>主なイメージ</h2>
+          <p>リポジトリ内の代表的なイメージを抜粋しています。詳細は各ディレクトリを参照してください。</p>
+        </div>
+        <div class="image-grid">
+          <article class="card">
+            <h3>ubi-micro-9</h3>
+            <p>RHEL 9 UBI Micro ベースの日本語対応ベースイメージ。</p>
+          </article>
+          <article class="card">
+            <h3>ubi-micro-base</h3>
+            <p>C / C++ ベース開発向け。X-Window アプリ実行も想定した構成。</p>
+          </article>
+          <article class="card">
+            <h3>ubi-micro-jbase</h3>
+            <p>Java アプリケーション向けベースイメージ。</p>
+          </article>
+          <article class="card">
+            <h3>ubi-micro-node</h3>
+            <p>Node.js 利用向けのイメージ。</p>
+          </article>
+          <article class="card">
+            <h3>ubi-micro-postgres</h3>
+            <p>PostgreSQL 関連の実行・検証用途向けイメージ。</p>
+          </article>
+          <article class="card">
+            <h3>ubi-micro-mysql</h3>
+            <p>MySQL 関連の利用を想定したイメージ。</p>
+          </article>
+          <article class="card">
+            <h3>ubi-micro-dev</h3>
+            <p>Development Tools を含むビルド向けイメージ。</p>
+          </article>
+          <article class="card">
+            <h3>ubi-micro-cs-nodejs</h3>
+            <p>Codespace / Node.js 系の利用を想定した構成。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-heading">
+          <h2>ディレクトリ構成の見方</h2>
+          <p>
+            各ディレクトリには対応するコンテナイメージの作成スクリプトや設定ファイルが含まれています。
+            利用したいイメージのフォルダに移動し、README や Dockerfile、ビルドスクリプトを参照してください。
+          </p>
+        </div>
+        <ul class="link-list">
+          <li><a href="https://github.com/kakinari/UBIMicro-podman/tree/main/ubi-micro-9">ubi-micro-9</a></li>
+          <li><a href="https://github.com/kakinari/UBIMicro-podman/tree/main/ubi-micro-base">ubi-micro-base</a></li>
+          <li><a href="https://github.com/kakinari/UBIMicro-podman/tree/main/ubi-micro-jbase">ubi-micro-jbase</a></li>
+          <li><a href="https://github.com/kakinari/UBIMicro-podman/tree/main/ubi-micro-node">ubi-micro-node</a></li>
+          <li><a href="https://github.com/kakinari/UBIMicro-podman/tree/main/ubi-micro-postgres">ubi-micro-postgres</a></li>
+          <li><a href="https://github.com/kakinari/UBIMicro-podman/tree/main/ubi-micro-mysql">ubi-micro-mysql</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© kakinari / UBIMicro-podman</p>
+      <p>
+        <a href="https://github.com/kakinari/UBIMicro-podman">GitHub</a>
+        <span class="divider">|</span>
+        <a href="https://hub.docker.com/r/kakinari/ubi-micro-ja">Docker Hub</a>
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
