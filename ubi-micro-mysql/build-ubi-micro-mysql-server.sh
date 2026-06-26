@@ -1,9 +1,8 @@
 #!/bin/bash
-VERSION=8.4
-# dnf install mysql84-community-release-el9-1.noarch.rpm
-# dnf update;
+VERSION=${1:-latest}
+LATEST=8.4
 
-microcontainer=$(buildah from docker.io/kakinari/ubi-micro-ja:9-base)
+microcontainer=$(buildah from docker.io/kakinari/ubi-micro-ja:10-base)
 micromount=$(buildah mount $microcontainer)
 dnf install \
 --installroot $micromount \
@@ -13,13 +12,13 @@ dnf install \
 --nodocs -y \
 mysql-community-server
 
-dnf clean all \
---installroot $micromount
-
 buildah umount $microcontainer
-buildah commit $microcontainer docker.io/kakinari/ubi-micro-ja:9-mysql-latest
-podman tag  docker.io/kakinari/ubi-micro-ja:9-mysql-latest  docker.io/kakinari/ubi-micro-ja:9-mysql-${VERSION}
-podman push docker.io/kakinari/ubi-micro-ja:9-mysql-${VERSION}
-podman push docker.io/kakinari/ubi-micro-ja:9-mysql-latest
-podman image rm -f docker.io/kakinari/ubi-micro-ja:9-mysql-${VERSION}
-podman image rm -f docker.io/kakinari/ubi-micro-ja:9-mysql-latest
+buildah commit $microcontainer docker.io/kakinari/ubi-micro-ja:10-mysql-${VERSION}
+
+if [ "$VERSION" = "latest" ]; then
+  buildah tag docker.io/kakinari/ubi-micro-ja:10-mysql-${VERSION} docker.io/kakinari/ubi-micro-ja:10-mysql-${LATEST}
+  podman push docker.io/kakinari/ubi-micro-ja:10-mysql-${LATEST}
+  podman image rm -f docker.io/kakinari/ubi-micro-ja:10-mysql-${LATEST}
+fi
+podman push docker.io/kakinari/ubi-micro-ja:10-mysql-${VERSION}
+podman image rm -f docker.io/kakinari/ubi-micro-ja:10-mysql-${VERSION}

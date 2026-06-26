@@ -1,8 +1,8 @@
 #!/bin/bash
 
-microcontainer=$(buildah from docker.io/kakinari/ubi-micro-ja:9)
+microcontainer=$(buildah from docker.io/kakinari/ubi-micro-ja:10)
 micromount=$(buildah mount $microcontainer)
-dnf install  xauth openssl openssh \
+dnf install  xauth openssl openssh gh \
 --installroot $micromount \
 --releasever=/ \
 --setopt install_weak_deps=false \
@@ -12,5 +12,5 @@ dnf clean all \
 --installroot $micromount
 
 buildah umount $microcontainer
-buildah commit $microcontainer docker.io/kakinari/ubi-micro-ja:9-base
-podman push docker.io/kakinari/ubi-micro-ja:9-base
+buildah commit $microcontainer docker.io/kakinari/ubi-micro-ja:10-base
+podman push docker.io/kakinari/ubi-micro-ja:10-base

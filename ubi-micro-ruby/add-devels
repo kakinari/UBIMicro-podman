@@ -1,1 +1,0 @@
-subscription-manager repos --enable codeready-builder-for-rhel-9-x86_64-rpms

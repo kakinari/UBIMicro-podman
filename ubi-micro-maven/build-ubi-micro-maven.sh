@@ -1,9 +1,14 @@
 #!/usr/bin/bash
-VERSION=3.9.9
+VERSION=${1:-latest}
+LATEST=3.9.16
 
-podman build --build-arg VERSION=${VERSION} -t docker.io/kakinari/ubi-micro-ja:9-maven-latest .
-podman tag  docker.io/kakinari/ubi-micro-ja:9-maven-latest docker.io/kakinari/ubi-micro-ja:9-maven-${VERSION}
-podman push docker.io/kakinari/ubi-micro-ja:9-maven-${VERSION}
-podman push docker.io/kakinari/ubi-micro-ja:9-maven-latest
-podman image rm docker.io/kakinari/ubi-micro-ja:9-maven-latest -f
-podman image rm docker.io/kakinari/ubi-micro-ja:9-maven-${VERSION} -f
+if [ "${VERSION}" = "latest" ]; then
+  podman build --network=host --build-arg VERSION=${LATEST} -t docker.io/kakinari/ubi-micro-ja:10-maven-${VERSION} .
+  podman tag  docker.io/kakinari/ubi-micro-ja:10-maven-${VERSION} docker.io/kakinari/ubi-micro-ja:10-maven-${LATEST}
+  podman push docker.io/kakinari/ubi-micro-ja:10-maven-${LATEST}
+  podman image rm -f docker.io/kakinari/ubi-micro-ja:10-maven-${LATEST}
+else
+  podman build --network=host --build-arg VERSION=${VERSION} -t docker.io/kakinari/ubi-micro-ja:10-maven-${VERSION} .
+fi
+podman push docker.io/kakinari/ubi-micro-ja:10-maven-${VERSION}
+podman image rm -f docker.io/kakinari/ubi-micro-ja:10-maven-${VERSION}

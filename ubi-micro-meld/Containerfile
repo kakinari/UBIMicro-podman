@@ -1,2 +1,2 @@
-FROM localhost/kakinari/ubi-micro-ja:9-meld
+FROM localhost/kakinari/ubi-micro-ja:10-meld
 CMD [ "/usr/bin/meld" ]

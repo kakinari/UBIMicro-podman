@@ -1,6 +1,6 @@
 #!/bin/bash
-VERSION=24
-microcontainer=$(buildah from docker.io/kakinari/ubi-micro-ja:9-base)
+VERSION=${1:-latest}
+microcontainer=$(buildah from docker.io/kakinari/ubi-micro-ja:10-base)
 micromount=$(buildah mount $microcontainer)
 dnf install \
 --installroot $micromount \
@@ -8,17 +8,17 @@ dnf install \
 --setopt install_weak_deps=false \
 --setopt=reposdir=/etc/yum.repos.d/ \
 --nodocs -y \
-java-latest-openjdk \
-google-noto-cjk-fonts-common google-noto-sans-cjk-ttc-fonts google-noto-serif-cjk-ttc-fonts
-
-dnf clean all \
---installroot $micromount
+java-${VERSION}-openjdk \
+java-${VERSION}-openjdk-devel \
+java-${VERSION}-openjdk-jmods
 
 buildah umount $microcontainer
-buildah commit $microcontainer localhost/kakinari/ubi-micro-ja:9-jbase
-podman build --build-arg TARGET=${VERSION}  -t docker.io/kakinari/ubi-micro-ja:9-jbase .
-podman tag  docker.io/kakinari/ubi-micro-ja:9-jbase docker.io/kakinari/ubi-micro-ja:9-jbase-${VERSION}
-podman push docker.io/kakinari/ubi-micro-ja:9-jbase-${VERSION}
-podman push docker.io/kakinari/ubi-micro-ja:9-jbase
-podman image rm -f localhost/kakinari/ubi-micro-ja:9-jbase
-podman image rm -f docker.io/kakinari/ubi-micro-ja:9-jbase-${VERSION}
+buildah commit $microcontainer localhost/kakinari/ubi-micro-ja:10-jbase
+podman build --build-arg TARGET=${VERSION}  -t docker.io/kakinari/ubi-micro-ja:10-jbase-${VERSION} .
+if [ "$VERSION" = "latest" ]; then
+  podman tag  docker.io/kakinari/ubi-micro-ja:10-jbase-${VERSION} docker.io/kakinari/ubi-micro-ja:10-jbase
+  podman push docker.io/kakinari/ubi-micro-ja:10-jbase
+fi
+podman push docker.io/kakinari/ubi-micro-ja:10-jbase-${VERSION}
+podman image rm -f localhost/kakinari/ubi-micro-ja:10-jbase
+podman image rm -f docker.io/kakinari/ubi-micro-ja:10-jbase-${VERSION}

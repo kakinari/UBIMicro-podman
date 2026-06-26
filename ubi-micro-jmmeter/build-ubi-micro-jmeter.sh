@@ -1,9 +1,15 @@
 #!/bin/bash
-VERSION=5.6.3
+VERSION=${1:-latest}
+LATEST=5.6.3
 
-podman build --build-arg VERSION=${VERSION} -t docker.io/kakinari/ubi-micro-ja:10-jmeter-latest .
-podman tag  docker.io/kakinari/ubi-micro-ja:10-jmeter-latest docker.io/kakinari/ubi-micro-ja:10-jmeter-${VERSION}
+if [ "${VERSION}" = "latest" ]; then
+  podman build --network=host --build-arg VERSION=${LATEST} -t docker.io/kakinari/ubi-micro-ja:10-jmeter-${VERSION} .
+  podman tag  docker.io/kakinari/ubi-micro-ja:10-jmeter-${VERSION} docker.io/kakinari/ubi-micro-ja:10-jmeter-${LATEST}
+  podman push docker.io/kakinari/ubi-micro-ja:10-jmeter-${LATEST}
+  podman image rm -f docker.io/kakinari/ubi-micro-ja:10-jmeter-${LATEST}
+
+else
+    podman build --network=host --build-arg VERSION=${VERSION} -t docker.io/kakinari/ubi-micro-ja:10-jmeter-${VERSION} .  
+fi
 podman push docker.io/kakinari/ubi-micro-ja:10-jmeter-${VERSION}
-podman push docker.io/kakinari/ubi-micro-ja:10-jmeter-latest
-podman image rm docker.io/kakinari/ubi-micro-ja:10-jmeter-latest
-podman image rm docker.io/kakinari/ubi-micro-ja:10-jmeter-${VERSION}
+podman image rm -f docker.io/kakinari/ubi-micro-ja:10-jmeter-${VERSION}

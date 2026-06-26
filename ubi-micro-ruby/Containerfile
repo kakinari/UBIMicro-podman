@@ -1,13 +1,14 @@
-FROM docker.io/kakinari/ubi-micro-ja:9-dev AS devenv
-ARG VERSION=3.4.1
-RUN curl -O https://cache.ruby-lang.org/pub/ruby/3.4/ruby-${VERSION}.tar.gz; \
+FROM docker.io/kakinari/ubi-micro-ja:10-dev AS devenv
+ARG VERSION=4.0.5
+
+RUN curl -O https://cache.ruby-lang.org/pub/ruby/4.0/ruby-${VERSION}.tar.gz; \
 tar xvzf ruby-${VERSION}.tar.gz; \
 cd ruby-${VERSION}; \
 ./configure; \
 make; \
 make install
 
-FROM docker.io/kakinari/ubi-micro-ja:9-dev
+FROM docker.io/kakinari/ubi-micro-ja:10-dev
 COPY --from=devenv /usr/local /usr/local
 RUN mkdir /root/work
 WORKDIR /root/work

@@ -1,4 +1,4 @@
-FROM localhost/kakinari/ubi-micro-ja:9-dev AS devenv
+FROM localhost/kakinari/ubi-micro-ja:10-dev AS devenv
 ARG TARGET=17.4
 RUN curl -O https://ftp.postgresql.org/pub/source/v${TARGET}/postgresql-${TARGET}.tar.gz; \
 tar xvzf postgresql-${TARGET}.tar.gz; \
@@ -9,7 +9,7 @@ make world; \
 make check; \
 make install-world;
 
-FROM localhost/kakinari/ubi-micro-ja:9-postgres
+FROM localhost/kakinari/ubi-micro-ja:10-postgres
 COPY --from=devenv /usr/local /usr/local
 ENV LD_LIBRARY_PATH /usr/local/pgsql/lib
 ENV PGDATA /usr/local/pgsql/data

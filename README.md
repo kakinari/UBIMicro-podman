@@ -29,10 +29,10 @@ docker pull kakinari/ubi-micro-ja:tagname
 ## イメージ作成スクリプト
 それぞれのフォルダには対応するイメージの作成スクリプトが公開されています。
 詳細はそれぞれのフォルダのREADMEを参照してください。
-### ubi-micro-9
-Redhat Enterprise Linux 9のUBI-Microをベースに日本語環境をデフォルトに設定しているベースイメージ
+### ubi-micro-10
+Redhat Enterprise Linux 10のUBI-Microをベースに日本語環境をデフォルトに設定しているベースイメージ
 ### ubi-micro-base
-ubi-micto-9をベースにC,C++ベースのアプリを実装するためのベースイメージ。　
+ubi-micto-10をベースにC,C++ベースのアプリを実装するためのベースイメージ。　
 
 X-Windowアプリをホスト側で実行できるように設定
 ### ubi-micro-jbase
@@ -47,7 +47,6 @@ Javaはheadlessを使用
 ソースコードをコンパイルするために使用するイメージ。
 
 Development Toolsをインストールしている。
-Java1.8.0は除外
 
 ### ubi-micro-jdev
 ubi-micro-devをベースにJavaソースコードをコンパイルするために使用するイメージ。　

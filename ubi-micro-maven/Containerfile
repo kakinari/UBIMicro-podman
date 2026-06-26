@@ -1,2 +1,3 @@
-FROM docker.io/kakinari/ubi-micro-ja:9-sdkman
-RUN source "/usr/local/sdkman/bin/sdkman-init.sh"; sdk install maven
+FROM docker.io/kakinari/ubi-micro-ja:10-sdkman
+ARG VERSION=latest
+RUN source "/usr/local/sdkman/bin/sdkman-init.sh"; sdk install maven ${VERSION}

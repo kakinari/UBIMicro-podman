@@ -1,4 +1,4 @@
-FROM docker.io/kakinari/ubi-micro-ja:9-jdev
+FROM docker.io/kakinari/ubi-micro-ja:10-jdev
 ENV SDKMAN_DIR /usr/local/sdkman
 RUN curl -s "https://get.sdkman.io" | bash; \
 mkdir /root/work

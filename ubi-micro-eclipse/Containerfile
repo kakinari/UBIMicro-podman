@@ -1,7 +1,8 @@
-FROM localhost/kakinari/ubi-micro-ja:9-eclipse
-ADD eclipse-jee-2024-12-R-linux-gtk-x86_64.tar.gz /opt
-ADD pleiades.tar.gz /opt/eclipse
-RUN chown -R 0:0 /opt/eclipse; \
-echo '-Xverify:none' >> /opt/eclipse/eclipse.ini; \
-echo '-javaagent:/opt/eclipse/plugins/jp.sourceforge.mergedoc.pleiades/pleiades.jar' >> /opt/eclipse/eclipse.ini
+FROM localhost/kakinari/ubi-micro-ja:10-eclipse
+ARG VERSION=2026-06
+RUN curl -L -o- https://ftp.jaist.ac.jp/pub/eclipse/technology/epp/downloads/release/${VERSION}/R/eclipse-java-${VERSION}-R-linux-gtk-x86_64.tar.gz | tar xz -C /opt; \
+    curl -L -o /opt/eclipse/pleiades.zip https://ftp.jaist.ac.jp/pub/mergedoc/pleiades/build/stable/pleiades.zip && unzip -q /opt/eclipse/pleiades.zip -d /opt/eclipse && rm -f /opt/eclipse/pleiades.zip; \
+    chown -R 0:0 /opt/eclipse; \
+    echo '-Xverify:none' >> /opt/eclipse/eclipse.ini; \
+    echo '-javaagent:/opt/eclipse/plugins/jp.sourceforge.mergedoc.pleiades/pleiades.jar' >> /opt/eclipse/eclipse.ini
 CMD [ "/opt/eclipse/eclipse" ]

@@ -1,8 +1,8 @@
 FROM localhost/kakinari/ubi-micro-ja:10-cs-nodejs
 COPY node.sh /etc/profile.d/node.sh
 WORKDIR /opt
-RUN curl -L https://nodejs.org/dist/latest/node-v26.3.0-linux-x64.tar.gz | tar xzf - && \
-    mv node-v26.3.0-linux-x64 node && \
+RUN curl -L https://nodejs.org/dist/v26.4.0/node-v26.4.0-linux-x64.tar.gz | tar xzf - && \
+    mv node-v26.4.0-linux-x64 node && \
     chmod 777 node && \
     mkdir -p  pnpm && \
     chmod 777 pnpm && \
