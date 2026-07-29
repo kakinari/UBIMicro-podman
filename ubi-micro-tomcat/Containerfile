@@ -2,7 +2,7 @@ FROM docker.io/kakinari/ubi-micro-ja:10-jdev AS devenv
 ARG VERSION=11.0.22
 ARG COMMON=1.5.1
 COPY container-tomcat.service /root/container-tomcat.service
-RUN curl -O https://dlcdn.apache.org/tomcat/tomcat-11/v${VERSION}/bin/apache-tomcat-${VERSION}.tar.gz; \
+RUN curl -O https://archive.apache.org/dist/tomcat/tomcat-11/v${VERSION}/bin/apache-tomcat-${VERSION}.tar.gz; \
 tar xvzf apache-tomcat-${VERSION}.tar.gz; \
 mv apache-tomcat-${VERSION} tomcat_home; \
 cd tomcat_home/bin; \

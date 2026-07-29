@@ -1,6 +1,7 @@
 #!/usr/bin/bash
 
 podman login docker.io
+podman login registry.redhat.io
 
 (cd ubi-micro-10; ./build-ubi-micro-ja.sh)
 (cd ubi-micro-base; ./build-ubi-micro-base.sh)
@@ -27,4 +28,9 @@ podman login docker.io
 (cd ubi-micro-eclipse; ./build-ubi-micro-eclipse.sh)
 (cd ubi-micro-mysql; ./build-ubi-micro-mysql-server.sh)
 
-# ./cleanup.sh
+(cd ubi-micro-csbase; bash ./build-ubi-micro-csbase.sh)
+(cd ubi-micro-cs-java; bash ./build-ubi-micro-java.sh)
+(cd ubi-micro-cs-nodejs; bash ./build-ubi-micro-nodejs.sh)
+(cd ubi-micro-cs-anaconda; bash ./build-ubi-micro-anaconda.sh)
+
+./cleanup.sh
