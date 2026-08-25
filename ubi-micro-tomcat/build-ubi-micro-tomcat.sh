@@ -1,6 +1,6 @@
 #/usr!/bin/bash
 VERSION=${1:-latest}
-LATEST=11.0.24
+LATEST=11.0.25
 COMMON=1.6.1
 
 if [ "${VERSION}" = "latest" ]; then
